@@ -117,6 +117,10 @@ apt_actions() {
         sudo apt update
         sudo apt install $_SERVER-server $_SERVER-tools -y
 
+        if [[ ! -d "/etc/redis/modules" ]]; then
+          sudo mkdir -p /etc/redis/modules
+        fi
+
         # additional action
         systemctl enable --now $_SERVER-server
     fi
